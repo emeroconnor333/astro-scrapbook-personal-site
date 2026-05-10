@@ -7,10 +7,12 @@ import postcardBack from "../assets/landing-page/postcard-back-lined.png";
     src={postcardBack}
     alt=""
     format="webp"
-    widths={[800, 1200]}
+    quality={75}
+    widths={[400, 800]}
     sizes="(max-width: 800px) 100vw, (max-width: 1210px) 50vw, 33vw"
     class="absolute inset-0 w-full h-full object-cover"
     loading="eager"
+    fetchpriority="high"
   />
   <div class="relative z-10 flex-1 space-y-1.5 text-base leading-relaxed text-stone-700 font-playfair">
     <p>Hey, I&apos;m Emer &#9825;</p>

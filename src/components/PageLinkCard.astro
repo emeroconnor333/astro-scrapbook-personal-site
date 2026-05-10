@@ -6,9 +6,10 @@ interface Props {
   title: string;
   href: string;
   painting: ImageMetadata;
+  priority?: boolean;
 }
 
-const { title, href, painting } = Astro.props;
+const { title, href, painting, priority = false } = Astro.props;
 ---
 <a href={href} class="block h-full">
   <div class="relative h-full w-full overflow-hidden flex items-center justify-center bg-amber-100">
@@ -16,10 +17,12 @@ const { title, href, painting } = Astro.props;
       src={painting}
       alt=""
       format="webp"
-      widths={[800, 1200]}
+      quality={75}
+      widths={[400, 800]}
       sizes="(max-width: 800px) 100vw, (max-width: 1210px) 50vw, 33vw"
       class="absolute inset-0 w-full h-full object-cover"
-      loading="eager"
+      loading={priority ? "eager" : "lazy"}
+      fetchpriority={priority ? "high" : "auto"}
     />
     <div class="absolute inset-0 border-[6px] border-white z-10 pointer-events-none" />
     <div class="relative z-10 w-full px-6 text-center">
