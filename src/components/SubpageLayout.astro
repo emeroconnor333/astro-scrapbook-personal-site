@@ -1,10 +1,18 @@
 ---
 interface Props {
-  patternSrc: string;
+  stripes: { color: string; size: number }[];
   columnWidth?: string;
 }
 
-const { patternSrc, columnWidth = "280px" } = Astro.props;
+const { stripes, columnWidth = "280px" } = Astro.props;
+
+let cursor = 0;
+const stops = stripes.flatMap(({ color, size }) => {
+  const start = cursor;
+  cursor += size;
+  return [`${color} ${start}px`, `${color} ${cursor}px`];
+});
+const gradient = `repeating-linear-gradient(180deg, ${stops.join(", ")})`;
 ---
 <div
   id="drag-scroll-container"
@@ -13,7 +21,7 @@ const { patternSrc, columnWidth = "280px" } = Astro.props;
 >
   <div
     class="fixed inset-x-0 pointer-events-none z-0"
-    style={`top: 15%; bottom: 15%; background-image: url(${patternSrc}); background-repeat: repeat-x; background-size: auto 100%;`}
+    style={`top: 15%; bottom: 15%; background-image: ${gradient};`}
   />
   <div
     class="relative z-10 px-16 py-8"
