@@ -1,0 +1,12 @@
+---
+interface Props {
+  width?: string;
+}
+const { width = "320px" } = Astro.props;
+---
+<div
+  class="flex flex-col justify-center gap-6 shrink-0 px-4 py-8"
+  style={`width: ${width};`}
+>
+  <slot />
+</div>

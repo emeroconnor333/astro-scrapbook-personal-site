@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import SubpageLayout from "../components/SubpageLayout.astro";
 import NoteCard from "../components/NoteCard.astro";
 import PinnedPhoto from "../components/PinnedPhoto.astro";
+import Column from "../components/Column.astro";
 import { Image } from "astro:assets";
 
 import stripeLogo from "../assets/internships/stripe-logo.png";
@@ -11,55 +12,63 @@ import outsideOffice from "../assets/internships/outside-aws-office.jpg";
 import internDay from "../assets/internships/intern-day.png";
 import insideOffice from "../assets/internships/inside-aws-office.jpg";
 import cafeCoding from "../assets/internships/cafe-coding.png";
+import ukAndIreland from "../assets/internships/uk-and-ireland-live.png";
 ---
 
 <Layout title="Internships | Emer O'Connor">
   <SubpageLayout stripes={[{color:"#FBD5DC",size:18},{color:"#F2A0B0",size:8},{color:"#FEFEFD",size:8},{color:"#F2A0B0",size:8},{color:"#F9C0CC",size:18},{color:"#FEFEFD",size:8},{color:"#F2A0B0",size:8}]}>
 
-    <NoteCard>
-      <Image src={stripeLogo} alt="Stripe" widths={[240, 480]} format="webp" class="w-full mb-3" style="max-height: 80px; object-fit: contain;" />
-      <p class="font-semibold text-stone-900 mb-1">Incoming Stripe Intern</p>
-      <p class="text-stone-400 text-sm">June &ndash; September 2026</p>
-      <p>I&apos;m really looking forward to a software engineering internship with Stripe this summer!</p>
-    </NoteCard>
+    <Column>
+      <NoteCard>
+        <Image src={stripeLogo} alt="Stripe" widths={[240, 480]} format="webp" class="w-full mb-3" style="max-height: 80px; object-fit: contain;" />
+        <p class="font-semibold text-stone-900 mb-1">Incoming Stripe Intern</p>
+        <p class="text-stone-400 text-sm">June &ndash; September 2026</p>
+        <p>I&apos;m really looking forward to a software engineering internship with Stripe this summer!</p>
+      </NoteCard>
+      <NoteCard>
+        <Image src={awsLogo} alt="AWS" widths={[240, 480]} format="webp" class="w-full h-auto mb-3" />
+        <p class="font-semibold text-stone-900 mb-1">Software Engineering Intern</p>
+        <p class="text-stone-400 text-sm mb-3">June &ndash; December 2025</p>
+        <p>Interned on the Relational Database Services Console team for 6 months.</p>
+      </NoteCard>
+    </Column>
 
-    <NoteCard>
-      <Image src={awsLogo} alt="AWS" widths={[240, 480]} format="webp" class="w-full h-auto mb-3" />
-      <p class="font-semibold text-stone-900 mb-1">Software Engineering Intern</p>
-      <p class="text-stone-400 text-sm mb-3">June &ndash; December 2025</p>
-      <p>Interned on the Relational Database Services Console team for 6 months.</p>
-    </NoteCard>
+    <Column>
+      <NoteCard>
+        <ul class="space-y-2 list-disc list-outside pl-5">
+          <li>Gained experience in cloud computing and AWS infrastructure</li>
+          <li>Acquired skills in modern web development by building with React, TypeScript, and GraphQL</li>
+          <li>Learned best practices in code reviews, testing, and cross-team communication within a global tech organisation</li>
+        </ul>
+      </NoteCard>
+      <PinnedPhoto src={internDay} alt="Intern day" caption="Intern day" rotate="rotate-1" />
+    </Column>
 
-    <NoteCard>
-      <ul class="space-y-2 list-disc list-outside pl-5">
-        <li>Gained experience in cloud computing and AWS infrastructure</li>
-        <li>Acquired skills in modern web development by building with React, TypeScript, and GraphQL</li>
-        <li>Learned best practices in code reviews, testing, and cross-team communication within a global tech organisation</li>
-      </ul>
-    </NoteCard>
+    <Column>
+      <PinnedPhoto src={outsideOffice} alt="ISE interns at AWS" caption="ISE interns at AWS" rotate="rotate-1" />
+      <NoteCard>
+        <p>
+          My intern project at AWS was a POC for the RDS dashboard that replaced existing REST APIs with GraphQL to reduce latency for customers with a large number of databases. This POC cut page load time by 66% for large accounts.
+        </p>
+      </NoteCard>
+    </Column>
 
-    <PinnedPhoto src={outsideOffice} alt="ISE interns at AWS" caption="ISE interns at AWS" rotate="rotate-1" />
+    <Column>
+      <NoteCard>
+        <p>
+          I also worked on production features including a customer survey within the dashboard, frontend updates to reflect AWS API changes, and accessibility and bug fixes.
+        </p>
+        <p class="mt-3">
+          I had a really great experience thanks to the support of my team and the positive learning environment AWS provided.
+        </p>
+      </NoteCard>
+      <PinnedPhoto src={insideOffice} alt="Inside the AWS office" rotate="-rotate-1" />
+    </Column>
 
-    <PinnedPhoto src={internDay} alt="Intern day" caption="Intern day" rotate="rotate-1" />
-
-    <NoteCard>
-      <p>
-        My intern project at AWS was a POC for the RDS dashboard that replaced existing REST APIs with GraphQL to reduce latency for customers with a large number of databases. This POC cut page load time by 66% for large accounts.
-      </p>
-    </NoteCard>
-
-    <NoteCard>
-      <p>
-        I also worked on production features including a customer survey within the dashboard, frontend updates to reflect AWS API changes, and accessibility and bug fixes.
-      </p>
-      <p class="mt-3">
-        I had a really great experience thanks to the support of my team and the positive learning environment AWS provided.
-      </p>
-    </NoteCard>
-
-    <PinnedPhoto src={insideOffice} alt="Inside the AWS office" rotate="-rotate-1" />
-
-    <PinnedPhoto src={cafeCoding} alt="Cafe coding" caption="My fav place to code &lt;3" rotate="rotate-1" />
+    <Column>
+      <PinnedPhoto src={cafeCoding} alt="Cafe coding" caption="My fav place to code &lt;3" rotate="rotate-1" />
+      <PinnedPhoto src={ukAndIreland} alt="UK and Ireland Amazon event" caption="UK and Ireland Amazon event" rotate="-rotate-1" />
+    </Column>
 
   </SubpageLayout>
 </Layout>

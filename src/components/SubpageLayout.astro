@@ -1,10 +1,9 @@
 ---
 interface Props {
   stripes: { color: string; size: number }[];
-  columnWidth?: string;
 }
 
-const { stripes, columnWidth = "280px" } = Astro.props;
+const { stripes } = Astro.props;
 
 let cursor = 0;
 const stops = stripes.flatMap(({ color, size }) => {
@@ -24,8 +23,7 @@ const gradient = `repeating-linear-gradient(180deg, ${stops.join(", ")})`;
     style={`top: 15%; bottom: 15%; background-image: ${gradient};`}
   />
   <div
-    class="relative z-10 px-16 py-8"
-    style={`columns: ${columnWidth}; column-gap: 2rem; column-fill: auto; max-height: 74vh; min-width: 100vw;`}
+    class="relative z-10 flex flex-row items-stretch h-full px-4"
   >
     <slot />
   </div>
