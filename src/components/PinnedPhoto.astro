@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  caption?: string;
+  rotate?: string;
+  priority?: boolean;
+}
+
+const { src, alt, caption, rotate = "rotate-1", priority = false } = Astro.props;
+---
+<div class={`mb-4 ${rotate} transition-transform duration-200 hover:rotate-2 inline-block w-full`}>
+  <div class="bg-white pt-2 px-2 pb-2 shadow-md">
+    <Image
+      src={src}
+      alt={alt}
+      widths={[420, 840]}
+      sizes="(max-width: 800px) 100vw, 420px"
+      format="webp"
+      class="object-contain w-full h-auto block"
+      loading={priority ? "eager" : "lazy"}
+    />
+    {caption && (
+      <p class="text-center text-xs text-stone-500 mt-2 font-playfair italic">{caption}</p>
+    )}
+  </div>
+</div>

@@ -1,0 +1,52 @@
+---
+import Layout from "../layouts/Layout.astro";
+import BioCard from "../components/BioCard.astro";
+import PageLinkCard from "../components/PageLinkCard.astro";
+
+import hokusai1 from "../assets/landing-page/paintings/hokusai-1.jpeg";
+import hokusai2 from "../assets/landing-page/paintings/hokusai-2.jpeg";
+import hokusai3 from "../assets/landing-page/paintings/hokusai-3.jpeg";
+import hokusai4 from "../assets/landing-page/paintings/hokusai-4.jpeg";
+import hokusai5 from "../assets/landing-page/paintings/hokusai-5.jpeg";
+
+const pageLinks = [
+  { id: "bsc", title: "immersive software engineering", href: "/ise", painting: hokusai1 },
+  { id: "internships", title: "internships", href: "/internships", painting: hokusai2 },
+  { id: "hackeurope", title: "hackeurope", href: "/hackeurope", painting: hokusai3 },
+  { id: "creative", title: "creative", href: "/creative", painting: hokusai4 },
+  { id: "notion", title: "notion templates", href: "/notion", painting: hokusai5 },
+];
+---
+
+<Layout>
+  <div
+    class="flex-1 p-8 md:p-12 flex items-center"
+    style="background-image: repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(251,207,232,0.4) 19px,rgba(251,207,232,0.4) 20px),repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(251,207,232,0.4) 19px,rgba(251,207,232,0.4) 20px); background-color: #fffbeb;"
+  >
+    <div class="grid grid-cols-1 800:grid-cols-2 1210:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+      <div class="relative aspect-[6/4] pt-3">
+        <div
+          class="absolute top-[calc(0.75rem-0.625rem)] left-1/2 -translate-x-1/2 z-20 w-5 h-5 rounded-full shadow-md"
+          style="background: radial-gradient(circle at 40% 35%, #fda4af, #FF637E);"
+        />
+        <div class="h-full w-full shadow-lg overflow-hidden border border-stone-200">
+          <BioCard />
+        </div>
+      </div>
+
+      {pageLinks.map((card) => (
+        <div class="relative aspect-[6/4] pt-3">
+          <div
+            class="absolute top-[calc(0.75rem-0.625rem)] left-1/2 -translate-x-1/2 z-20 w-5 h-5 rounded-full shadow-md"
+            style="background: radial-gradient(circle at 40% 35%, #fda4af, #FF637E);"
+          />
+          <div class="h-full w-full shadow-lg overflow-hidden border border-stone-200 transition-transform duration-200 hover:rotate-2">
+            <PageLinkCard title={card.title} href={card.href} painting={card.painting} />
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </div>
+</Layout>

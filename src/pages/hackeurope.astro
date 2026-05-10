@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SubpageLayout from "../components/SubpageLayout.astro";
+import NoteCard from "../components/NoteCard.astro";
+import PinnedPhoto from "../components/PinnedPhoto.astro";
+import { Image } from "astro:assets";
+
+import hackeuropeLogo from "../assets/hackeurope/HackEurope-logo-black.png";
+import selfieWithBanner from "../assets/hackeurope/hack-selfie-with-banner.png";
+import hackeuropeTeam from "../assets/hackeurope/hackeurope-team.jpg";
+import sigPost from "../assets/hackeurope/hackeurope-sig-post.png";
+import celsiusCans from "../assets/hackeurope/hackeurope-celcius-cans.png";
+import sigMerch from "../assets/hackeurope/hack-sig-merch.png";
+---
+
+<Layout title="HackEurope | Emer O'Connor">
+  <SubpageLayout patternSrc="/patterns/pink-brown-gingham-pattern.png">
+
+    <NoteCard>
+      <Image src={hackeuropeLogo} alt="HackEurope" widths={[240, 480]} format="webp" class="h-14 w-auto mb-3" />
+      <p>
+        Europe has incredible tech and entrepreneurial talent, but the problem is that it&apos;s so spread out. Our goal with <a href="https://hackeurope.com" target="_blank" rel="noopener noreferrer" class="underline underline-offset-2 hover:text-rose-300 transition-colors">HackEurope</a> was to create a community for young people who are passionate about CS and startups.
+      </p>
+      <p class="mt-3">
+        We had over 1,000 of Europe&apos;s top CS student talent take part across 3 in-person locations (Dublin, Paris, and Stockholm) and raised &euro;250K from sponsors like Stripe, Google, Intercom, and SIG.
+      </p>
+      <p class="mt-3">
+        As a co-founder and Head of Design, I led the branding for the event and helped design and implement the websites.
+      </p>
+    </NoteCard>
+
+    <PinnedPhoto src={selfieWithBanner} alt="Selfie with HackEurope banner" caption="Our Sponsors" rotate="rotate-1" />
+
+    <PinnedPhoto src={hackeuropeTeam} alt="HackEurope team" caption="The team" rotate="-rotate-1" />
+
+    <PinnedPhoto src={sigPost} alt="SIG's HackEurope post" caption="SIG's LinkedIn post" rotate="-rotate-1" />
+
+    <NoteCard>
+      <p>
+        I got to work with such a talented and motivated team, meet founders and engineers genuinely passionate about European tech, and see incredible projects get built and be continued after the event.
+      </p>
+    </NoteCard>
+
+    <PinnedPhoto src={celsiusCans} alt="Selfie with Celsius cans" caption="So many Celsius cans..." rotate="rotate-1" />
+
+    <PinnedPhoto src={sigMerch} alt="Merch at HackEurope" caption="SIG's merch" rotate="rotate-1" />
+
+  </SubpageLayout>
+</Layout>

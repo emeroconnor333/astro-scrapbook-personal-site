@@ -1,0 +1,15 @@
+@import "tailwindcss";
+@import "@fontsource-variable/playfair-display";
+
+@theme inline {
+  --font-playfair: "Playfair Display Variable", Georgia, serif;
+  --color-cream: #fffbeb;
+  --breakpoint-800: 800px;
+  --breakpoint-1210: 1210px;
+}
+
+body {
+  font-family: var(--font-playfair);
+  background-color: #fffbeb;
+  color: #292524;
+}

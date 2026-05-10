@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SubpageLayout from "../components/SubpageLayout.astro";
+import NoteCard from "../components/NoteCard.astro";
+import PinnedPhoto from "../components/PinnedPhoto.astro";
+
+import blueDress from "../assets/creative/blue-dress.png";
+import blueTop from "../assets/creative/blue-top.png";
+import crochetDuck from "../assets/creative/crochet-duck.png";
+import gracieAbrams from "../assets/creative/gracie-abrams-painting.png";
+import pinkSatinSet from "../assets/creative/pink-satin-set.png";
+import swanPainting from "../assets/creative/swan-painting.png";
+import crochetTurtle from "../assets/creative/crochet-turtle.png";
+import cowSketch from "../assets/creative/cow-sketch.png";
+import deerSketch from "../assets/creative/deer-sketch.png";
+import profileSketch from "../assets/creative/profile-sketch.png";
+---
+
+<Layout title="Creative | Emer O'Connor">
+  <SubpageLayout patternSrc="/patterns/yellow-pink-polka-pattern.png">
+
+    <NoteCard>
+      <p>Here are some of the things I&apos;ve sewn, crocheted, painted, and sketched recently.</p>
+    </NoteCard>
+
+    <PinnedPhoto src={blueDress} alt="Sewn blue dress" rotate="rotate-1" />
+    <PinnedPhoto src={blueTop} alt="Blue top" rotate="rotate-1" />
+    <PinnedPhoto src={crochetDuck} alt="Crochet duck" rotate="rotate-1" />
+    <PinnedPhoto src={gracieAbrams} alt="Gracie Abrams painting" rotate="rotate-1" />
+    <PinnedPhoto src={pinkSatinSet} alt="Sewn pink set" rotate="-rotate-1" />
+    <PinnedPhoto src={swanPainting} alt="Swan painting" rotate="-rotate-1" />
+    <PinnedPhoto src={crochetTurtle} alt="Crochet turtle" rotate="-rotate-1" />
+    <PinnedPhoto src={cowSketch} alt="Cow sketch" rotate="rotate-1" />
+    <PinnedPhoto src={deerSketch} alt="Deer sketch" rotate="-rotate-1" />
+    <PinnedPhoto src={profileSketch} alt="Profile sketch" rotate="rotate-1" />
+
+  </SubpageLayout>
+</Layout>

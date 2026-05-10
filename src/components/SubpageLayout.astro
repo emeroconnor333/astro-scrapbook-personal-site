@@ -1,0 +1,58 @@
+---
+interface Props {
+  patternSrc: string;
+  columnWidth?: string;
+}
+
+const { patternSrc, columnWidth = "280px" } = Astro.props;
+---
+<div
+  id="drag-scroll-container"
+  class="flex-1 overflow-x-auto overflow-y-hidden flex items-center"
+  style="cursor: grab;"
+>
+  <div
+    class="fixed inset-x-0 pointer-events-none z-0"
+    style={`top: 15%; bottom: 15%; background-image: url(${patternSrc}); background-repeat: repeat-x; background-size: auto 100%;`}
+  />
+  <div
+    class="relative z-10 px-16 py-8"
+    style={`columns: ${columnWidth}; column-gap: 2rem; column-fill: auto; max-height: 74vh; min-width: 100vw;`}
+  >
+    <slot />
+  </div>
+</div>
+
+<script>
+  const el = document.getElementById("drag-scroll-container");
+  if (el) {
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    el.addEventListener("mousedown", (e) => {
+      e.preventDefault();
+      isDragging = true;
+      startX = e.pageX - el.offsetLeft;
+      scrollLeft = el.scrollLeft;
+      el.style.cursor = "grabbing";
+      el.style.userSelect = "none";
+    });
+
+    const endDrag = () => {
+      isDragging = false;
+      el.style.cursor = "grab";
+      el.style.userSelect = "";
+    };
+
+    el.addEventListener("mouseup", endDrag);
+    el.addEventListener("mouseleave", endDrag);
+
+    el.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - el.offsetLeft;
+      el.scrollLeft = scrollLeft - (x - startX);
+    });
+  }
+</script>
