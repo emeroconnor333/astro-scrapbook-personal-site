@@ -57,11 +57,11 @@ const pageLinks = [
     transform: none;
   }
   .hero-card.will-animate {
-    transform: translate(var(--tx), var(--ty));
+    transform: translate(var(--tx), var(--ty)) rotate(var(--tr));
   }
   .hero-card.animating {
     transition: transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    transform: translate(0, 0);
+    transform: translate(0, 0) rotate(0deg);
   }
 </style>
 
@@ -81,12 +81,14 @@ const pageLinks = [
       const originX = gridRect.left + gridRect.width / 2;
       const originY = gridRect.top + gridRect.height / 2;
 
-      cards.forEach((card) => {
+      const angles = [-8, 5, -6, 9, -4, 7];
+      cards.forEach((card, i) => {
         const rect = card.getBoundingClientRect();
         const cardCX = rect.left + rect.width / 2;
         const cardCY = rect.top + rect.height / 2;
         card.style.setProperty("--tx", `${originX - cardCX}px`);
         card.style.setProperty("--ty", `${originY - cardCY}px`);
+        card.style.setProperty("--tr", `${angles[i % angles.length]}deg`);
         card.classList.add("will-animate");
       });
 
