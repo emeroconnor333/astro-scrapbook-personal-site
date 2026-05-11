@@ -6,18 +6,7 @@ const { width = "320px" } = Astro.props;
 ---
 <div
   class="col-item flex flex-col justify-center gap-6 shrink-0 px-4 py-8"
-  style={`--col-width: ${width};`}
+  style={`width: ${width};`}
 >
   <slot />
 </div>
-
-<style>
-  .col-item {
-    width: var(--col-width);
-  }
-  @media (max-width: 767px) {
-    .col-item {
-      width: calc(var(--col-width) * 0.9);
-    }
-  }
-</style>
